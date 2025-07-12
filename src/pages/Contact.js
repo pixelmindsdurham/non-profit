@@ -27,10 +27,10 @@ export default function Contact() {
       <section>
         <h2 className="text-2xl font-semibold mb-2">Social Media</h2>
         <div className="flex gap-4">
-          <a href="javascript:void(0)" aria-label="Facebook" className="text-blue-700 hover:underline">Facebook</a>
-          <a href="javascript:void(0)" aria-label="Twitter" className="text-blue-700 hover:underline">Twitter</a>
-          <a href="javascript:void(0)" aria-label="Instagram" className="text-blue-700 hover:underline">Instagram</a>
-          <a href="javascript:void(0)" aria-label="LinkedIn" className="text-blue-700 hover:underline">LinkedIn</a>
+          <a aria-label="Facebook" className="text-blue-700 hover:underline">Facebook</a>
+          <a aria-label="Twitter" className="text-blue-700 hover:underline">Twitter</a>
+          <a aria-label="Instagram" className="text-blue-700 hover:underline">Instagram</a>
+          <a aria-label="LinkedIn" className="text-blue-700 hover:underline">LinkedIn</a>
         </div>
       </section>
     </div>
