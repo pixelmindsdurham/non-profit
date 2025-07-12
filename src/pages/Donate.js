@@ -22,7 +22,7 @@ export default function Donate() {
       </section>
       <section>
         <h2 className="text-2xl font-semibold mb-2">Transparency</h2>
-        <p>We are committed to transparency and accountability. <a href="#" className="text-blue-700 hover:underline">View our annual report</a>.</p>
+        <p>We are committed to transparency and accountability. <a href="javascript:void(0)" className="text-blue-700 hover:underline">View our annual report</a>.</p>
       </section>
     </div>
   );
