@@ -81,16 +81,16 @@ export default function App() {
         <footer className="bg-gray-900 text-white py-8 text-center mt-8 shadow-inner">
           <div className="flex flex-col items-center gap-3">
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 mb-2 text-lg font-semibold">
-              <a href="mailto:hello@givehart.org" className="hover:underline">hello@givehart.org</a>
+              <a href="mailto:pixelmindsdurham@gmail.com" className="hover:underline">pixelmindsdurham@gmail.com</a>
               <span className="hidden sm:inline">|</span>
-              <a href="tel:1234567890" className="hover:underline">123-456-7890</a>
+              <a href="tel:1234567890" className="hover:underline">919-390-0941</a>
             </div>
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 justify-center mb-2 text-2xl">
+            {/* <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 justify-center mb-2 text-2xl">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-mandarin transition">Facebook</a>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-mandarin transition">Twitter</a>
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-mandarin transition">Instagram</a>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-mandarin transition">LinkedIn</a>
-            </div>
+            </div> */}
             <form className="flex flex-col sm:flex-row gap-2 items-center justify-center mb-2 w-full max-w-md">
               <input type="email" placeholder="Sign up for our newsletter" className="border-2 border-mandarin rounded px-3 py-2 w-full sm:w-auto text-gray-900" required />
               <button type="submit" className="bg-mandarin text-white px-4 py-2 rounded font-bold hover:bg-mandarin-dark transition w-full sm:w-auto">Subscribe</button>

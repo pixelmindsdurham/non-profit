@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 
 // Import JPEG images from the images folder
-import stem1 from "../images/a realistic image of kids learning python.jpeg";
-import stem2 from "../images/Minecraft.jpeg";
-import stem3 from "../images/realistic non-profit education related pictures.jpeg";
-import stem4 from "../images/realistic STEM based non-profit education related pictures.jpeg";
-import stem5 from "../images/colorful logo for Pixel Minds - non-profit without any writing.jpeg";
+import stem1 from "../images/Untitled design (1).svg";
+import stem3 from "../images/Untitled design (3).svg";
+import stem4 from "../images/Untitled design (4).svg";
+import stem5 from "../images/Untitled design.svg";
+import { upcoming } from "./Events";
 
-const images = [stem1, stem2, stem3, stem4];
+const images = [stem5, stem4, stem1, stem3];
 
 export default function Home() {
   const [current, setCurrent] = useState(0);
@@ -30,7 +30,7 @@ export default function Home() {
               <img
                 src={images[current]}
                 alt={`STEM Activity ${current + 1}`}
-                className="w-full h-[340px] sm:h-[420px] object-cover"
+                className="w-full h-[340px] sm:h-[600px] object-cover"
                 style={{ maxWidth: "100vw" }}
               />
               {/* Carousel Controls */}
@@ -85,8 +85,12 @@ export default function Home() {
           <h2 className="text-2xl font-bold mb-4">Upcoming Events</h2>
           <div className="flex flex-col gap-4 items-center">
             <div className="bg-white rounded-lg shadow p-4 w-full max-w-md">
-              <h4 className="font-semibold">STEM Fair 2025</h4>
-              <p>August 15, 2025 &mdash; Community Center</p>
+              {upcoming.map((e) => (
+                <div key={e.name} className="mb-2">
+                  <h4 className="font-semibold">{e.name}</h4>
+                  <p>{e.date} &mdash; {e.location}</p>
+                </div>
+              ))}
               <a href="/givehart/events" className="text-blue-700 font-semibold hover:underline">See all events</a>
             </div>
           </div>

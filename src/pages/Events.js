@@ -1,13 +1,13 @@
 import React from "react";
 
-const upcoming = [
+export const upcoming = [
   {
-    name: "STEM Fair 2025",
-    date: "August 15, 2025",
+    name: "LOKI × Into the Deep",
+    date: "July 19, 2025",
     time: "10:00 AM - 2:00 PM",
     location: "Community Center",
     desc: "A fun day of STEM demos, workshops, and prizes!",
-    link: "/events"
+    link: "https://loki.carolinabots.org/"
   }
 ];
 const past = [
