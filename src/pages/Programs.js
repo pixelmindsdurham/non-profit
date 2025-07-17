@@ -43,7 +43,7 @@ export default function Programs() {
             <p><span className="font-semibold">Duration:</span> {p.duration}</p>
             <p><span className="font-semibold">Skills:</span> {p.skills}</p>
             <p><span className="font-semibold">Benefits:</span> {p.benefits}</p>
-            <a href="#register" className="text-blue-700 font-semibold hover:underline block mt-4">Register/Enquire</a>
+            <a href="https://thecodewiz.com/durham-nc" className="text-blue-700 font-semibold hover:underline block mt-4">Register/Enquire</a>
           </div>
         ))}
       </div>
