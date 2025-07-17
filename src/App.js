@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, Navigate } from "react-router-dom";
+import { FaHome, FaInfoCircle, FaLaptopCode, FaHandsHelping, FaCalendarAlt, FaEnvelope, FaDonate } from "react-icons/fa";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Programs from "./pages/Programs";
@@ -9,41 +10,54 @@ import Contact from "./pages/Contact";
 import Donate from "./pages/Donate";
 import "./App.css";
 
-
-function NavLinkItem({ to, label, donate }) {
+// NavLinkItem with icon support
+function NavLinkItem({ to, label, icon, donate }) {
   return (
     <Link
       to={to}
       className={
         donate
-          ? "px-3 py-2 rounded bg-mandarin text-white font-extrabold shadow hover:bg-mandarin-dark focus:bg-mandarin-dark transition border-2 border-mandarin-light"
-          : "px-3 py-2 rounded bg-blue-400 text-white font-bold shadow hover:bg-blue-500 focus:bg-blue-500 transition border-2 border-transparent hover:border-blue-300 focus:border-blue-400"
+          ? "flex flex-col items-center justify-center px-4 py-2 rounded bg-mandarin text-white font-extrabold shadow hover:bg-mandarin-dark focus:bg-mandarin-dark transition border-2 border-mandarin-light w-full text-center mt-2"
+          : "flex flex-col items-center justify-center px-2 py-2 rounded bg-blue-500 text-white font-bold shadow hover:bg-blue-600 focus:bg-blue-600 transition border-2 border-transparent hover:border-blue-300 focus:border-blue-400 text-center"
       }
-      style={{ minWidth: 90, textAlign: 'center', letterSpacing: 1 }}
+      style={{ letterSpacing: 1, fontSize: donate ? 18 : 14 }}
     >
-      {label}
+      {icon}
+      <span className="text-xs mt-1">{label}</span>
     </Link>
   );
 }
 
 export default function App() {
   return (
-    <Router>
-      <div className="min-h-screen flex flex-col bg-white">
-        {/* Header */}
-        <nav className="bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-900 shadow-lg sticky top-0 z-50 border-b-2 border-blue-800">
-          <div className="max-w-7xl mx-auto flex justify-between items-center py-3 px-2 md:px-6">
-            <Link to="/">
-              <img src="https://placehold.co/160x50/fff/1e3a8a?text=Pixel+Minds" alt="Pixel Minds Logo" className="h-12 drop-shadow-lg" />
-            </Link>
-            <div className="flex gap-2 md:gap-4 text-base font-bold">
-              <NavLinkItem to="/" label="Home" />
-              <NavLinkItem to="/about" label="About" />
-              <NavLinkItem to="/programs" label="Programs" />
-              <NavLinkItem to="/get-involved" label="Get Involved" />
-              <NavLinkItem to="/events" label="Events" />
-              <NavLinkItem to="/contact" label="Contact" />
-              <NavLinkItem to="/donate" label="Donate" donate />
+    <Router basename="/">
+      <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-x-hidden">
+        {/* Navbar */}
+        <nav className="bg-white/90 shadow sticky top-0 z-50 border-b w-full">
+          <div className="max-w-7xl mx-auto flex flex-col items-center py-2 px-2 sm:px-3 md:px-6 w-full">
+            <a
+              href="https://givehart.org"
+              className="flex items-center mb-2"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://placehold.co/180x40/fff/1e3a8a?text=GiveHart+Inc."
+                alt="GiveHart Inc. Logo"
+                className="h-8 w-auto"
+              />
+            </a>
+            {/* Responsive grid: 2 columns on xs, 3 on sm, 6 on md+ */}
+            <div className="w-full max-w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-1 min-w-0">
+              <NavLinkItem to="/givehart" label="Home" icon={<FaHome size={20} />} />
+              <NavLinkItem to="/givehart/about" label="About" icon={<FaInfoCircle size={20} />} />
+              <NavLinkItem to="/givehart/programs" label="Programs" icon={<FaLaptopCode size={20} />} />
+              <NavLinkItem to="/givehart/get-involved" label="Get Involved" icon={<FaHandsHelping size={20} />} />
+              <NavLinkItem to="/givehart/events" label="Events" icon={<FaCalendarAlt size={20} />} />
+              <NavLinkItem to="/givehart/contact" label="Contact" icon={<FaEnvelope size={20} />} />
+            </div>
+            {/* Donate button full width on second line */}
+            <div className="w-full flex">
+              <NavLinkItem to="/givehart/donate" label="Donate" icon={<FaDonate size={20} />} donate />
             </div>
           </div>
         </nav>
@@ -51,35 +65,38 @@ export default function App() {
         {/* Main Content */}
         <main className="flex-1 bg-white py-8 px-2 md:px-0">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/programs" element={<Programs />} />
-            <Route path="/get-involved" element={<GetInvolved />} />
-            <Route path="/events" element={<Events />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/donate" element={<Donate />} />
+            {/* Redirect from / to /givehart */}
+            <Route path="/" element={<Navigate to="/givehart" replace />} />
+            <Route path="/givehart" element={<Home />} />
+            <Route path="/givehart/about" element={<About />} />
+            <Route path="/givehart/programs" element={<Programs />} />
+            <Route path="/givehart/get-involved" element={<GetInvolved />} />
+            <Route path="/givehart/events" element={<Events />} />
+            <Route path="/givehart/contact" element={<Contact />} />
+            <Route path="/givehart/donate" element={<Donate />} />
           </Routes>
         </main>
 
         {/* Footer */}
         <footer className="bg-gray-900 text-white py-8 text-center mt-8 shadow-inner">
           <div className="flex flex-col items-center gap-3">
-            <div className="flex gap-6 mb-2 text-lg font-semibold">
-              <a href="mailto:hello@pixelminds.org" className="hover:underline">hello@pixelminds.org</a>
-              <span>|</span>
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 mb-2 text-lg font-semibold">
+              <a href="mailto:hello@givehart.org" className="hover:underline">hello@givehart.org</a>
+              <span className="hidden sm:inline">|</span>
               <a href="tel:1234567890" className="hover:underline">123-456-7890</a>
             </div>
-            <div className="flex gap-6 justify-center mb-2 text-2xl">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-yellow-300 transition"><i className="fab fa-facebook"></i> Facebook</a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-yellow-300 transition"><i className="fab fa-twitter"></i> Twitter</a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-yellow-300 transition"><i className="fab fa-instagram"></i> Instagram</a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-yellow-300 transition"><i className="fab fa-linkedin"></i> LinkedIn</a>
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 justify-center mb-2 text-2xl">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-mandarin transition">Facebook</a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-mandarin transition">Twitter</a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-mandarin transition">Instagram</a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-mandarin transition">LinkedIn</a>
             </div>
             <form className="flex flex-col sm:flex-row gap-2 items-center justify-center mb-2 w-full max-w-md">
-              <input type="email" placeholder="Sign up for our newsletter" className="border-2 border-yellow-400 rounded px-3 py-2 w-full sm:w-auto text-gray-900" required />
-              <button type="submit" className="bg-yellow-400 text-blue-900 px-4 py-2 rounded font-bold hover:bg-yellow-300 transition">Subscribe</button>
+              <input type="email" placeholder="Sign up for our newsletter" className="border-2 border-mandarin rounded px-3 py-2 w-full sm:w-auto text-gray-900" required />
+              <button type="submit" className="bg-mandarin text-white px-4 py-2 rounded font-bold hover:bg-mandarin-dark transition w-full sm:w-auto">Subscribe</button>
             </form>
-            <p className="text-xs text-yellow-200">&copy; 2025 Pixel Minds Foundation. All rights reserved.</p>
+            <p className="text-xs text-mandarin-light">&copy; 2025 GiveHart Inc. All rights reserved.</p>
+            <p className="text-xs text-gray-400">Powered by Pixel Minds LLC</p>
           </div>
         </footer>
       </div>
